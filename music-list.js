@@ -8,19 +8,19 @@ const musicList = [
   {
     name: "Warm Nights",
     artist: "LAKEY INSPIRED",
-    image: "2",
+    image: "image2",
     audio: "music2"
   },
   {
     name: "Ice Tea",
     artist: "Not The King",
-    image: "3",
+    image: "image3",
     audio: "music3"
   },
   {
     name: "When You Move Your Body",
     artist: "Quesa",
-    image: "4",
+    image: "image4",
     audio: "music4"
   }
 ]
