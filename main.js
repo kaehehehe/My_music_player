@@ -11,6 +11,9 @@ const nextBtn = document.querySelector('#next');
 const progressBar = document.querySelector('.music-duration');
 const progressArea = document.querySelector('.progress-bar');
 const repeatBtn = document.querySelector('#repeat');
+const showListBtn = document.querySelector('#more-music');
+const closeListBtn = document.querySelector('#close');
+const playList = document.querySelector('.play-list');
 
 let musicNum = 1;
 
@@ -138,4 +141,10 @@ musicAudio.addEventListener('ended', () => {
   }
 });
 
+showListBtn.addEventListener('click', () => {
+  playList.classList.add('show');
+});
 
+closeListBtn.addEventListener('click', () => {
+  playList.classList.remove('show');
+});
