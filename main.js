@@ -8,6 +8,7 @@ const musicAudio = document.querySelector('audio');
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
+const progressBar = document.querySelector('.music-duration');
 
 let musicNum = 1;
 
@@ -60,4 +61,11 @@ nextBtn.addEventListener('click', () => {
 
 prevBtn.addEventListener('click', () => {
   prevMusic();
+});
+
+musicAudio.addEventListener('timeupdate', (e) => {
+  const currentTime = e.target.currentTime;
+  const duration = e.target.duration;
+  let progressWith = (currentTime / duration) * 100;
+  progressBar.style.width = `${progressWith}%`;
 });
