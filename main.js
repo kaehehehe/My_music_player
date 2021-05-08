@@ -9,6 +9,7 @@ const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
 const progressBar = document.querySelector('.music-duration');
+const progressArea = document.querySelector('.progress-bar');
 
 let musicNum = 1;
 
@@ -86,4 +87,15 @@ musicAudio.addEventListener('timeupdate', (e) => {
   currentSec < 10 ? currentSec = `0${currentSec}` : currentSec = currentSec;
   musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 });
+
+progressArea.addEventListener('click', (e) => {
+  let progressWidth = progressArea.clientWidth;
+  let clickedOffsetX = e.offsetX;
+  let musicDuration = musicAudio.duration;
+
+  musicAudio.currentTime = (clickedOffsetX / progressWidth) * musicDuration;
+});
+
+
+
 
