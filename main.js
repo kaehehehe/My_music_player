@@ -68,4 +68,22 @@ musicAudio.addEventListener('timeupdate', (e) => {
   const duration = e.target.duration;
   let progressWith = (currentTime / duration) * 100;
   progressBar.style.width = `${progressWith}%`;
+
+  let musicCurrentTime = document.querySelector('.current');
+  let musicDuration = document.querySelector('.duration');
+
+  musicAudio.addEventListener('loadeddata', () => {
+    let totalDuration = musicAudio.duration;
+    
+    let totalMin = Math.floor(totalDuration / 60);
+    let totalSec = Math.floor(totalDuration % 60);
+    totalSec < 10 ? totalSec = `0${totalSec}` : totalSec = totalSec;
+    musicDuration.innerText = `${totalMin}:${totalSec}`;
+  });
+
+  let currentMin = Math.floor( currentTime / 60);
+  let currentSec = Math.floor( currentTime % 60);
+  currentSec < 10 ? currentSec = `0${currentSec}` : currentSec = currentSec;
+  musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 });
+
