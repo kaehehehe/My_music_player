@@ -123,6 +123,7 @@ button {
   border-radius: 50%;
   background-color: #e1e6ec;
   box-shadow: 2px 2px 5px #a2b1c6, -2px -2px 5px #fff;
+  user-select: none;
 }
 
 .buttons button:active {

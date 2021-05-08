@@ -10,6 +10,7 @@ const prevBtn = document.querySelector('#prev');
 const nextBtn = document.querySelector('#next');
 const progressBar = document.querySelector('.music-duration');
 const progressArea = document.querySelector('.progress-bar');
+const repeatBtn = document.querySelector('#repeat');
 
 let musicNum = 1;
 
@@ -96,6 +97,45 @@ progressArea.addEventListener('click', (e) => {
   musicAudio.currentTime = (clickedOffsetX / progressWidth) * musicDuration;
 });
 
+repeatBtn.addEventListener('click', () => {
+  let getText = repeatBtn.innerText;
 
+  switch(getText) {
+    case 'repeat':
+      repeatBtn.innerText = 'repeat_one';
+      repeatBtn.setAttribute('title', 'Repeat track')
+      break;
+    case 'repeat_one':
+      repeatBtn.innerText = 'shuffle';
+      repeatBtn.setAttribute('title', 'Shuffle');
+      break;
+    case 'shuffle':
+      repeatBtn.innerText = 'repeat';
+      repeatBtn.setAttribute('title', 'Repeat')
+      break;
+  }
+});
+
+musicAudio.addEventListener('ended', () => {
+  let getText = repeatBtn.innerText;
+
+  switch(getText) {
+    case 'repeat':
+      nextMusic();
+      break;
+    case 'repeat_one':
+      playMusic();
+      break;
+    case 'shuffle':
+      let randomIndex = Math.floor((Math.random() * musicList.length) +1);
+      do {
+        randomIndex = Math.floor((Math.random() * musicList.length) +1);
+      } while (musicNum == randomIndex);
+      musicNum = randomIndex;
+      loadMusic(musicNum);
+      playMusic();
+      break;
+  }
+});
 
 
